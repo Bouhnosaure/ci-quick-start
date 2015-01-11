@@ -12,13 +12,13 @@
             </div>
         {% endif %}
 
-        <a class="btn btn-block btn-social btn-facebook" href="login/social/facebook">
+        <a class="btn btn-block btn-social btn-facebook" href="login/social/facebook/">
             <i class="fa fa-facebook"></i> Sign in with Facebook
         </a>
-        <a class="btn btn-block btn-social btn-twitter" href="login/social/twitter">
+        <a class="btn btn-block btn-social btn-twitter" href="login/social/twitter/">
             <i class="fa fa-twitter"></i> Sign in with Twitter
         </a>
-        <a class="btn btn-block btn-social btn-google-plus" href="login/social/google">
+        <a class="btn btn-block btn-social btn-google-plus" href="login/social/google/">
             <i class="fa fa-google-plus"></i> Sign in with Google
         </a>
 
@@ -31,12 +31,12 @@
 
             <div class="form-group">
                 {{ lang('login_identity_label', 'identity') }}
-                {{ form_input({'name':'identity','class':'form-control','autofocus':'autofocus'}) }}
+                {{ form_input(identity) }}
             </div>
 
             <div class="form-group">
                 {{ lang('login_password_label', 'password') }}
-                {{ form_input({'name':'password','class':'form-control','type':'password'}) }}
+                {{ form_input(password) }}
             </div>
 
             <div class="checkbox">
@@ -49,6 +49,10 @@
         </fieldset>
 
         {{ form_close() }}
+
+        <p class="text-center">Or</p>
+
+        <a href="register" class="btn btn-primary btn-block"> {{ lang('register_heading') }}</a>
 
         <hr>
 

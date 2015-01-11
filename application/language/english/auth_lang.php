@@ -29,6 +29,27 @@ $lang['login_remember_label']  = 'Remember Me:';
 $lang['login_submit_btn']      = 'Login';
 $lang['login_forgot_password'] = 'Forgot your password?';
 
+// Register
+$lang['register_heading']                           = 'Register';
+$lang['register_subheading']                        = 'Please enter the user\'s information below.';
+$lang['register_fname_label']                       = 'First Name:';
+$lang['register_lname_label']                       = 'Last Name:';
+$lang['register_company_label']                     = 'Company Name:';
+$lang['register_email_label']                       = 'Email:';
+$lang['register_phone_label']                       = 'Phone:';
+$lang['register_password_label']                    = 'Password:';
+$lang['register_password_confirm_label']            = 'Confirm Password:';
+$lang['register_submit_btn']                        = 'Create User';
+$lang['register_validation_fname_label']            = 'First Name';
+$lang['register_validation_lname_label']            = 'Last Name';
+$lang['register_validation_email_label']            = 'Email Address';
+$lang['register_validation_phone1_label']           = 'First Part of Phone';
+$lang['register_validation_phone2_label']           = 'Second Part of Phone';
+$lang['register_validation_phone3_label']           = 'Third Part of Phone';
+$lang['register_validation_company_label']          = 'Company Name';
+$lang['register_validation_password_label']         = 'Password';
+$lang['register_validation_password_confirm_label'] = 'Password Confirmation';
+
 // Index
 $lang['index_heading']           = 'Users';
 $lang['index_subheading']        = 'Below is a list of the users.';
