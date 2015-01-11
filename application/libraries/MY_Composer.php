@@ -12,7 +12,13 @@
  * @author Alexandre Mangin
  */
 class MY_Composer {
+
     function __construct() {
-        include("./vendor/autoload.php");
+        if (ENVIRONMENT != 'testing') {
+            include("./vendor/autoload.php");
+        } else {
+            include("../vendor/autoload.php");
+        }
     }
+
 }

@@ -1,6 +1,107 @@
 {% extends "layout.html.twig" %}
 
+{% block page_name %}Account{% endblock %}
+
 {% block body %}
-    {{ dump(user) }}
-    {{ dump(accounts) }}
+    
+    {% if flashdata('message') %}
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            {{ flashdata('message') }}
+        </div>
+    {% endif %}
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ user.first_name ~ ' ' ~ user.first_name }}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-3 col-lg-3 " align="center">
+                <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle">
+            </div>
+
+            <div class=" col-md-9 col-lg-9 "> 
+                <table class="table table-user-information">
+                    <tbody>
+                        <tr>
+                            <td>{{ lang('username_label') }}</td>
+                            <td>{{ user.username }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ lang('fname_label') }}</td>
+                            <td>{{ user.first_name }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ lang('name_label') }}</td>
+                            <td>{{ user.last_name }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ lang('email_label') }}</td>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ lang('phone_label') }}</td>
+                            <td>{{ user.phone }}</td>
+                        </tr>
+                    </tbody>
+                </table>       
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ lang('account_linked') }}</h3>
+        </div>
+        <div class="panel-body">
+            <div class=" col-md-12 col-lg-12   "> 
+                <table class="table">
+                    <tbody>
+                        {% for account in accounts %}
+                            <tr>
+                                <td>
+                                    <a href="#" class="btn btn-social-icon btn-{{ (account.provider == 'google')? account.provider~'-plus' : account.provider }}">
+                                        <i class="fa fa-{{account.provider}}"></i>
+                                    </a>
+                                    <a href="social/unlink/{{account.openid}}" class="btn btn-warning">
+                                        {{ lang('account_linked_unlink') }} <i class="fa fa-times"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>       
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class=" col-md-12 col-lg-12   "> 
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a class="btn btn-block btn-social btn-facebook" href="login/social/facebook/">
+                                    <i class="fa fa-facebook"></i> Link this account with Facebook
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="btn btn-block btn-social btn-twitter" href="login/social/twitter/">
+                                    <i class="fa fa-twitter"></i> Link this account Twitter
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="btn btn-block btn-social btn-google-plus" href="login/social/google/">
+                                    <i class="fa fa-google-plus"></i> Link this account Google
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -60,6 +60,7 @@ $route['create-group'] = "user/auth/create_group";
 $route['edit-group/(:num)'] = "user/auth/edit_group/$1";
 
 $route['login/social/(:any)'] = "user/social_auth/login/$1";
+$route['social/unlink/(:num)'] = "user/social_auth/unlink_account/$1";
 
 
 /* End of file routes.php */

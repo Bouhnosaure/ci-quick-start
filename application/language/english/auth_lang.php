@@ -165,3 +165,19 @@ $lang['reset_password_new_password_confirm_label']            = 'Confirm New Pas
 $lang['reset_password_submit_btn']                            = 'Change';
 $lang['reset_password_validation_new_password_label']         = 'New Password';
 $lang['reset_password_validation_new_password_confirm_label'] = 'Confirm New Password';
+
+// misc
+$lang['username_label']                    = 'Username:';
+$lang['fname_label']                       = 'First Name:';
+$lang['name_label']                        = 'Last Name:';
+$lang['company_label']                     = 'Company Name:';
+$lang['email_label']                       = 'Email:';
+$lang['phone_label']                       = 'Phone:';
+
+$lang['account_linked']                       = 'Account Linked';
+$lang['account_linked_already']                       = 'Already Linked';
+$lang['account_linked_unlink']                       = 'Unlink this account';
+$lang['account_linked_link']                       = 'Link an account';
+
+
+

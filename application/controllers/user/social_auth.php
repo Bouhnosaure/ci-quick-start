@@ -76,6 +76,33 @@ class Social_auth extends CI_Controller {
         }
     }
 
+    function unlink_account($open_id) {
+        
+        if (!$this->ion_auth->logged_in()) {
+            //redirect them to the login page
+            redirect('login', 'refresh');
+        }
+        
+        $user = $this->ion_auth->user()->row();
+        $openid_user = $this->openid_model->get_by_openid($open_id);
+        
+        if($openid_user->user_id == $user->id){
+            
+            $this->openid_model->delete($open_id);
+            $this->session->set_flashdata('message', 'Unlink is successful');
+            
+            redirect('user');
+            
+        }else{
+            
+            $this->session->set_flashdata('message', 'Error during the unlink');
+            
+            redirect('user');
+        }
+        
+        $this->session->set_flashdata('message', 'Error during the unlink');
+    }
+
     function _render_page($view, $data = nul) {
         $this->viewdata = (empty($data)) ? $this->data : $data;
 

@@ -183,9 +183,12 @@ class Twig {
             return sprintf(base_url() . 'assets/%s', ltrim($asset, '/'));
         }));
 
-        //custom functions
         $this->_twig_env->addFunction(new \Twig_SimpleFunction('session', function ($item) {
             return $this->_ci->session->userdata($item);
+        }));
+
+        $this->_twig_env->addFunction(new \Twig_SimpleFunction('flashdata', function ($item) {
+            return $this->_ci->session->flashdata($item);
         }));
 
 

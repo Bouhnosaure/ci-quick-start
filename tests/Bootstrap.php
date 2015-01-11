@@ -99,7 +99,7 @@ else
 
     define ('VIEWPATH', APPPATH . 'views/');
 }
-error_reporting(-1);
+error_reporting(1);
 
 
 /*
