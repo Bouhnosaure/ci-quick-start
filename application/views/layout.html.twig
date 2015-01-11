@@ -19,11 +19,20 @@
                             <h1 class="page-header">{% block page_name %}{% endblock %}</h1>
                         </div>
                     </div>
+
+                    {% if flashdata('message') %}
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            {{ flashdata('message') }}
+                        </div>
+                    {% endif %}
+
+                    {% include "elements/notifier_alert.html.twig" %}
+
                     {% block body %}
                     {% endblock %}
                 </div>
             </div>
-
             {% include "elements/footer.html.twig" %}
         </div>
         {% include "elements/scripts.html.twig" %}

@@ -1,24 +1,26 @@
 {% extends "layout.html.twig" %}
 
+{% block page_name %}{{lang('edit_group_heading') }}{% endblock %}
+
 {% block body %}
-    <h1>{{lang('edit_group_heading') }}</h1>
+    
     <p>{{lang('edit_group_subheading') }}</p>
 
-    <div id="infoMessage">{{message }}</div>
-
     {{form_open(current_url()) }}
+    <fieldset>
 
-    <p>
+    <div class="form-group">
         {{lang('edit_group_name_label', 'group_name') }} <br />
         {{form_input(group_name) }}
-    </p>
+    </div>
 
-    <p>
+    <div class="form-group">
         {{lang('edit_group_desc_label', 'description') }} <br />
         {{form_input(group_description) }}
-    </p>
+    </div>
 
-    <p>{{form_submit('submit', lang('edit_group_submit_btn')) }}</p>
+    <p>{{form_submit('submit', lang('edit_group_submit_btn'), 'class="btn btn-lg btn-success btn-block"') }}</p>
+    </fieldset>
 
     {{form_close() }}
 {% endblock %}

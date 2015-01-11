@@ -1,0 +1,54 @@
+{% extends "layout.html.twig" %}
+
+{% block page_name %}{{ lang('manage_users_heading') }}{% endblock %}
+
+{% block body %}
+
+    <p>{{ lang('manage_users_subheading') }}</p>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>{{ lang('manage_users_fname_th') }}</th>
+                    <th>{{ lang('manage_users_lname_th') }}</th>
+                    <th>{{ lang('manage_users_email_th') }}</th>
+                    <th>{{ lang('manage_users_groups_th') }}</th>
+                    <th>{{ lang('manage_users_status_th') }}</th>
+                    <th>{{ lang('manage_users_action_th') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.id|escape }}</td>
+                        <td>{{ user.first_name|escape }}</td>
+                        <td>{{ user.last_name|escape }}</td>
+                        <td>{{ user.email|escape }}</td>
+                        <td>
+                            {% for group in user.groups %}
+
+                                {{ anchor("edit-group/"~group.id, group.name|escape )  }}<br />
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% if user.active%}
+                                {{ anchor("deactivate/"~user.id,  lang('manage_users_active_link')) }}
+                            {% else %}
+                                {{ anchor("activate/"~user.id,  lang('manage_users_inactive_link')) }}
+                            {% endif %}
+                        </td>
+
+                        <td>{{ anchor("edit-user/"~user.id, 'Edit') }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <p>
+        {{ anchor('create-user', lang('manage_users_create_user_link'), 'class="btn btn-primary"') }} 
+        {{ anchor('create-group', lang('manage_users_create_group_link'), 'class="btn btn-primary"') }}
+    </p>
+{% endblock %}

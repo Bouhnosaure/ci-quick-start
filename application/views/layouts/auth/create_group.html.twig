@@ -1,24 +1,25 @@
 {% extends "layout.html.twig" %}
 
+{% block page_name %}{{ lang('create_group_heading') }}{% endblock %}
+
 {% block body %}
-    <h1>{{lang('create_group_heading') }}</h1>
     <p>{{lang('create_group_subheading') }}</p>
 
-    <div id="infoMessage">{{ message }}</div>
-
     {{form_open("create-group") }}
-
-    <p>
-        {{lang('create_group_name_label', 'group_name') }} <br />
-        {{form_input(group_name) }}
-    </p>
-
-    <p>
-        {{lang('create_group_desc_label', 'description') }} <br />
-        {{form_input(description) }}
-    </p>
-
-    <p>{{form_submit('submit', lang('create_group_submit_btn')) }}</p>
-
+    <fieldset>
+        
+        <div class="form-group">
+            {{lang('create_group_name_label', 'group_name') }} <br />
+            {{form_input(group_name) }}
+        </div>
+        
+        <div class="form-group">
+            {{lang('create_group_desc_label', 'description') }} <br />
+            {{form_input(description) }}
+        </div>
+        
+        <p>{{form_submit('submit', lang('create_group_submit_btn'), 'class="btn btn-lg btn-success btn-block"') }}</p>
+        
+    </fieldset>
     {{ form_close() }}
 {% endblock %}

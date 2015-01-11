@@ -50,19 +50,30 @@ $lang['register_validation_company_label']          = 'Company Name';
 $lang['register_validation_password_label']         = 'Password';
 $lang['register_validation_password_confirm_label'] = 'Password Confirmation';
 
+// manage_users
+$lang['manage_users_heading']           = 'Users';
+$lang['manage_users_subheading']        = 'Below is a list of the users.';
+$lang['manage_users_fname_th']          = 'First Name';
+$lang['manage_users_lname_th']          = 'Last Name';
+$lang['manage_users_email_th']          = 'Email';
+$lang['manage_users_groups_th']         = 'Groups';
+$lang['manage_users_status_th']         = 'Status';
+$lang['manage_users_action_th']         = 'Action';
+$lang['manage_users_active_link']       = 'Active';
+$lang['manage_users_inactive_link']     = 'Inactive';
+$lang['manage_users_create_user_link']  = 'Create a new user';
+$lang['manage_users_create_group_link'] = 'Create a new group';
+
 // Index
-$lang['index_heading']           = 'Users';
-$lang['index_subheading']        = 'Below is a list of the users.';
-$lang['index_fname_th']          = 'First Name';
-$lang['index_lname_th']          = 'Last Name';
-$lang['index_email_th']          = 'Email';
-$lang['index_groups_th']         = 'Groups';
-$lang['index_status_th']         = 'Status';
-$lang['index_action_th']         = 'Action';
-$lang['index_active_link']       = 'Active';
-$lang['index_inactive_link']     = 'Inactive';
-$lang['index_create_user_link']  = 'Create a new user';
-$lang['index_create_group_link'] = 'Create a new group';
+$lang['manage_groups_heading']           = 'Groups';
+$lang['manage_groups_subheading']        = 'Below is a list of the groups.';
+$lang['manage_groups_fname_th']          = 'Name';
+$lang['manage_groups_desc_th']           = 'Description';
+$lang['manage_groups_action_th']         = 'Action';
+$lang['manage_groups_inactive_link']     = 'Inactive';
+$lang['manage_groups_create_user_link']  = 'Create a new user';
+$lang['manage_groups_create_group_link'] = 'Create a new group';
+
 
 // Deactivate User
 $lang['deactivate_heading']                  = 'Deactivate User';

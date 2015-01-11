@@ -1,22 +1,25 @@
 {% extends "layout.html.twig" %}
 
+{% block page_name %}{{ lang('deactivate_heading') }}{% endblock %}
+
 {% block body %}
-    <h1>{{lang('deactivate_heading') }}</h1>
     <p>{{sprintf(lang('deactivate_subheading'), user.username) }}</p>
 
     {{form_open("deactivate/"~ user.id ) }}
+    <fieldset>
 
-    <p>
-        {{lang('deactivate_confirm_y_label', 'confirm') }}
-        <input type="radio" name="confirm" value="yes" checked="checked" />
-        {{lang('deactivate_confirm_n_label', 'confirm') }}
-        <input type="radio" name="confirm" value="no" />
-    </p>
+        <div class="form-group">
+            {{lang('deactivate_confirm_y_label', 'confirm') }}
+            <input type="radio" name="confirm" value="yes" checked="checked" />
+            {{lang('deactivate_confirm_n_label', 'confirm') }}
+            <input type="radio" name="confirm" value="no" />
+        </div>
 
-    {{form_hidden(csrf) }}
-    {{form_hidden( {'id': user.id} ) }}
+        {{form_hidden(csrf) }}
+        {{form_hidden( {'id': user.id} ) }}
 
-    <p>{{form_submit('submit', lang('deactivate_submit_btn')) }}</p>
+        <p>{{form_submit('submit', lang('deactivate_submit_btn'), 'class="btn btn-lg btn-success btn-block"') }}</p>
 
+    </fieldset>
     {{form_close() }}
 {% endblock %}

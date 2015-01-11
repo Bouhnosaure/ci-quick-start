@@ -15,12 +15,18 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">{% block page_name %}{% endblock %}</h3>
                         </div>
+                        
                         {% block body %}
                         {% endblock %}
+                        
+                        <div class="panel-footer">
+                            {% include "elements/footer.html.twig" %}
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            {% include "elements/scripts.html.twig" %}
+        {% include "elements/scripts.html.twig" %}
     </body>
 </html>

@@ -32,7 +32,7 @@ class Auth extends CI_Controller {
 		}
 	}
 	//redirect if needed, otherwise display the user list
-	public function admin()
+	public function manage_users()
 	{
 
 		if (!$this->ion_auth->logged_in())
@@ -57,7 +57,33 @@ class Auth extends CI_Controller {
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
 
-			$this->_render_page('layouts/auth/index', $this->data);
+			$this->_render_page('layouts/auth/manage_users', $this->data);
+		}
+	}
+        
+        //redirect if needed, otherwise display the user list
+	public function manage_groups()
+	{
+
+		if (!$this->ion_auth->logged_in())
+		{
+			//redirect them to the login page
+			redirect('login', 'refresh');
+		}
+		elseif (!$this->ion_auth->is_admin()) //remove this elseif if you want to enable this for non-admins
+		{
+			//redirect them to the home page because they must be an administrator to view this
+			return show_error('You must be an administrator to view this page.');
+		}
+		else
+		{
+			//set the flash data error message if there is one
+			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+
+			//list the users
+			$this->data['groups'] = $this->ion_auth->groups()->result();
+
+			$this->_render_page('layouts/auth/manage_groups', $this->data);
 		}
 	}
 
@@ -87,7 +113,7 @@ class Auth extends CI_Controller {
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/', 'refresh');
+				redirect('user', 'refresh');
 			}
 			else
 			{
@@ -196,7 +222,8 @@ class Auth extends CI_Controller {
 			{       
 				//if the password was successfully changed
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				$this->logout();
+				//$this->logout();
+                                redirect('user', 'refresh');
 			}
 			else
 			{
@@ -397,22 +424,35 @@ class Auth extends CI_Controller {
 		{
 			$activation = $this->ion_auth->activate($id, $code);
 		}
-		else if ($this->ion_auth->is_admin())
+		else if ($this->ion_auth->is_admin() && $code == false)
 		{
 			$activation = $this->ion_auth->activate($id);
 		}
 
 		if ($activation)
-		{
-			//redirect them to the auth page
-			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("login", 'refresh');
+		{   
+                        if ($this->ion_auth->is_admin()){
+                            //redirect them to the auth page
+                            $this->session->set_flashdata('message', $this->ion_auth->messages());
+                            redirect("manage-users", 'refresh'); 
+                        }else{
+                            //redirect them to the auth page
+                            $this->session->set_flashdata('message', $this->ion_auth->messages());
+                            redirect("login", 'refresh');
+                        }
 		}
 		else
-		{
-			//redirect them to the forgot password page
-			$this->session->set_flashdata('message', $this->ion_auth->errors());
-			redirect("forgot-password", 'refresh');
+		{       
+                    if ($this->ion_auth->is_admin()){
+                        //redirect them to the auth page
+                        $this->session->set_flashdata('message', $this->ion_auth->errors());
+                        redirect("manage-users", 'refresh');
+
+                    }else{
+                        //redirect them to the forgot password page
+                        $this->session->set_flashdata('message', $this->ion_auth->errors());
+                        redirect("forgot-password", 'refresh');
+                    }		
 		}
 	}
 
@@ -458,7 +498,7 @@ class Auth extends CI_Controller {
 			}
 
 			//redirect them back to the auth page
-			redirect('login', 'refresh');
+			redirect('manage-users', 'refresh');
 		}
 	}
 
@@ -501,7 +541,7 @@ class Auth extends CI_Controller {
 			//check to see if we are creating the user
 			//redirect them back to the admin page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("login", 'refresh');
+			redirect("manage-users", 'refresh');
 		}
 		else
 		{
@@ -569,7 +609,7 @@ class Auth extends CI_Controller {
 
 		if ($this->ion_auth->logged_in())
 		{
-			redirect('/', 'refresh');
+			redirect('user', 'refresh');
 		}
 
 		$tables = $this->config->item('tables','ion_auth');
@@ -828,14 +868,15 @@ class Auth extends CI_Controller {
 			   if($this->ion_auth->update($user->id, $data))
 			    {
 			    	//redirect them back to the admin page if admin, or to the base url if non admin
-				    $this->session->set_flashdata('message', $this->ion_auth->messages() );
+				    $this->session->set_flashdata('message', $this->ion_auth->messages());
+                                    
 				    if ($this->ion_auth->is_admin())
 					{
-						redirect('login', 'refresh');
+						redirect('manage-users', 'refresh');
 					}
 					else
 					{
-						redirect('/', 'refresh');
+						redirect('user', 'refresh');
 					}
 
 			    }
@@ -845,11 +886,11 @@ class Auth extends CI_Controller {
 				    $this->session->set_flashdata('message', $this->ion_auth->errors() );
 				    if ($this->ion_auth->is_admin())
 					{
-						redirect('login', 'refresh');
+						redirect('manage-users', 'refresh');
 					}
 					else
 					{
-						redirect('/', 'refresh');
+						redirect('user', 'refresh');
 					}
 
 			    }
@@ -923,17 +964,18 @@ class Auth extends CI_Controller {
 		}
 
 		//validate form input
-		$this->form_validation->set_rules('group_name', $this->lang->line('create_group_validation_name_label'), 'required|alpha_dash');
+		$this->form_validation->set_rules('group_name', $this->lang->line('create_group_validation_name_label'), 'required|alpha_dash|callback_check_group_name');
 
 		if ($this->form_validation->run() == TRUE)
 		{
+                    
 			$new_group_id = $this->ion_auth->create_group($this->input->post('group_name'), $this->input->post('description'));
 			if($new_group_id)
 			{
 				// check to see if we are creating the group
 				// redirect them back to the admin page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect("login", 'refresh');
+				redirect("manage-groups", 'refresh');
 			}
 		}
 		else
@@ -996,7 +1038,7 @@ class Auth extends CI_Controller {
 				{
 					$this->session->set_flashdata('message', $this->ion_auth->errors());
 				}
-				redirect("login", 'refresh');
+				redirect("manage-groups", 'refresh');
 			}
 		}
 
@@ -1023,6 +1065,16 @@ class Auth extends CI_Controller {
 
 		$this->_render_page('layouts/auth/edit_group', $this->data);
 	}
+        
+        function check_group_name($name) {
+            if ($this->ion_auth_model->get_group_by_name($name) != FALSE) {
+                $this->form_validation->set_message('check_group_name','Name already taken');
+                return FALSE;
+            } else {
+            return TRUE;
+            }
+        }
+        
 
 
 	function _get_csrf_nonce()

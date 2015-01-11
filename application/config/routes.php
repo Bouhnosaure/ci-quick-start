@@ -45,11 +45,13 @@ $route['404_override'] = '';
 
 $route['login'] = "user/auth/login";
 $route['user'] = "user/auth/index";
-$route['admin'] = "user/auth/admin";
+$route['manage-users'] = "user/auth/manage_users";
+$route['manage-groups'] = "user/auth/manage_groups";
 $route['logout'] = "user/auth/logout";
 $route['change-password'] = "user/auth/change_password";
 $route['forgot-password'] = "user/auth/forgot_password";
 $route['reset-password/(:any)'] = "user/auth/reset_password/$1";
+$route['activate/(:any)'] = "user/auth/activate/$1";
 $route['activate/(:any)/(:any)'] = "user/auth/activate/$1/$2";
 $route['deactivate/(:any)'] = "user/auth/deactivate/$1";
 $route['create-user'] = "user/auth/create_user";

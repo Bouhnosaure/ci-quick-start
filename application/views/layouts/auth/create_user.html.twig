@@ -1,50 +1,51 @@
 {% extends "layout.html.twig" %}
 
+{% block page_name %}{{ lang('create_user_heading') }}{% endblock %}
+
 {% block body %}
-    <h1>{{lang('create_user_heading') }}</h1>
+
     <p>{{lang('create_user_subheading') }}</p>
 
-    <div id="infoMessage">{{message }}</div>
-
     {{form_open("create-user") }}
+    <fieldset>
+        
+        <div class="form-group">
+            {{lang('create_user_fname_label', 'first_name') }} <br />
+            {{form_input(first_name) }}
+        </div>
 
-    <p>
-        {{lang('create_user_fname_label', 'first_name') }} <br />
-        {{form_input(first_name) }}
-    </p>
+        <div class="form-group">
+            {{lang('create_user_lname_label', 'last_name') }} <br />
+            {{form_input(last_name) }}
+        </div>
 
-    <p>
-        {{lang('create_user_lname_label', 'last_name') }} <br />
-        {{form_input(last_name) }}
-    </p>
+        <div class="form-group">
+            {{lang('create_user_company_label', 'company') }} <br />
+            {{form_input(company) }}
+        </div>
 
-    <p>
-        {{lang('create_user_company_label', 'company') }} <br />
-        {{form_input(company) }}
-    </p>
+        <div class="form-group">
+            {{lang('create_user_email_label', 'email') }} <br />
+            {{form_input(email) }}
+        </div>
 
-    <p>
-        {{lang('create_user_email_label', 'email') }} <br />
-        {{form_input(email) }}
-    </p>
+        <div class="form-group">
+            {{lang('create_user_phone_label', 'phone') }} <br />
+            {{form_input(phone) }}
+        </div>
 
-    <p>
-        {{lang('create_user_phone_label', 'phone') }} <br />
-        {{form_input(phone) }}
-    </p>
+        <div class="form-group">
+            {{lang('create_user_password_label', 'password') }} <br />
+            {{form_input(password) }}
+        </div>
 
-    <p>
-        {{lang('create_user_password_label', 'password') }} <br />
-        {{form_input(password) }}
-    </p>
+        <div class="form-group">
+            {{lang('create_user_password_confirm_label', 'password_confirm') }} <br />
+            {{form_input(password_confirm) }}
+        </div>
 
-    <p>
-        {{lang('create_user_password_confirm_label', 'password_confirm') }} <br />
-        {{form_input(password_confirm) }}
-    </p>
-
-
-    <p>{{form_submit('submit', lang('create_user_submit_btn')) }}</p>
-
+        <p>{{form_submit('submit', lang('create_user_submit_btn'), 'class="btn btn-lg btn-success btn-block"') }}</p>
+        
+    </fieldset>
     {{form_close() }}
 {% endblock %}
