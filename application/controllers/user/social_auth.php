@@ -7,7 +7,7 @@ use Hybridauth\Provider\Twitter as TwitterProvider;
 /**
  * Description of auth
  *
- * @author Alexandre
+ * @author Alexandre Mangin
  */
 class Social_auth extends CI_Controller {
 

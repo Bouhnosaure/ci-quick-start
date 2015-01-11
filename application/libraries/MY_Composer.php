@@ -9,7 +9,7 @@
 /**
  * Description of MY_Composer
  *
- * @author Alexandre
+ * @author Alexandre Mangin
  */
 class MY_Composer {
     function __construct() {

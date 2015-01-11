@@ -9,7 +9,7 @@
 /**
  * Description of DisplayHook
  *
- * @author Alexandre
+ * @author Alexandre Mangin
  */
 class DisplayHook {
 

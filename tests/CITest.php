@@ -9,7 +9,7 @@
 /**
  * Description of CITest
  *
- * @author Alexandre
+ * @author Alexandre Mangin
  */
 class CITest extends PHPUnit_Framework_TestCase {
 
