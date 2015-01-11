@@ -1,0 +1,6 @@
+# Swiftmailer Configuration
+twig_globals:
+    site_title: ci-quick-start
+    site_name: CI-quick-start
+    meta_description:  site
+    meta_author:  site

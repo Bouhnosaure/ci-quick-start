@@ -1,0 +1,20 @@
+{
+    "name": "vendor/bricocarre",
+    "description": "Description of project Bricocarre.",
+    "authors": [
+        {
+            "name": "Alexandre",
+            "email": "your@email.here"
+        }
+    ],
+    "require": {
+        "nesbot/carbon": "dev-master",
+        "symfony/yaml": "dev-master",
+        "phpunit/phpunit": "dev-master",
+        "twig/twig": "dev-master",
+        "hybridauth/hybridauth": "dev-3.0.0-Remake",
+        "swiftmailer/swiftmailer": "dev-master"
+    },
+    "require-dev": {
+    }
+}

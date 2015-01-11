@@ -1,0 +1,24 @@
+RewriteEngine on 
+
+RewriteCond $1 !^(index\.php|resource|assets|system|user_guide|bootstrap|robots\.txt|favicon\.ico|opensearch\.xml|sitemap\.xml) 
+
+# Rewrite to index.php/access_denied/URL
+RewriteRule ^(.*)$ index.php/access_denied/$1 [PT,L]
+
+# remove spaces from start or after /
+RewriteRule ^(.*/|)[\s%20]+(.+)$ $1$2 [L]
+
+# remove spaces from end or before /
+RewriteRule ^(.+?)[\s%20]+(/.*|)$ $1$2 [L]
+
+# replace spaces by - in between
+RewriteRule ^([^\s%20]*)(?:\s|%20)+(.*)$ $1-$2 [L,R]
+
+RewriteCond %{QUERY_STRING} \=PHP[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12} [NC]
+RewriteRule .* - [F]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L] 
+RewriteRule ^$ /index.php [L]
+

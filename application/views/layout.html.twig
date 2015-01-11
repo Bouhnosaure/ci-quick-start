@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        {% include "elements/head.html.twig" %}
+    </head>
+    <body>
+        <div id="wrapper">
+
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                {% include "elements/header-left.html.twig" %}
+                {% include "elements/header-right.html.twig" %}
+                {% include "elements/sidebar.html.twig" %}
+            </nav>
+
+            <div id="page-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">{% block page_name %}{% endblock %}</h1>
+                        </div>
+                    </div>
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </div>
+
+            {% include "elements/footer.html.twig" %}
+        </div>
+        {% include "elements/scripts.html.twig" %}
+    </body>
+</html>

@@ -1,0 +1,13 @@
+# Swiftmailer Configuration
+swiftmailer:
+    encryption: ssl
+    auth_mode:  login
+    host:      "smtp.mandrillapp.com"
+    port: 465
+    local_port: 25
+    username:  "alexandre.mangin@viacesi.fr"
+    password:  "q-Xc6zTMlB4r47KFdYgeEw"
+    from_address:  "admin@admin.com"
+    from_name:  "Admin"
+    return_path:
+    spool:     { type: memory }

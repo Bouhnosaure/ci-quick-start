@@ -1,0 +1,34 @@
+{
+    "name": "ci-quick-start",
+    "version": "0.0.1",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests",
+        "pages",
+        "index.html",
+        "/js"
+    ],
+    "main": [
+        "dist/css/sb-admin-2.css",
+        "dist/js/sb-admin-2.js"
+    ],
+    "dependencies": {
+        "jquery": "latest",
+        "jquery-ui": "latest",
+        "bootstrap": "latest",
+        "DataTables": "latest",
+        "datatables-plugins": "latest",
+        "flot": "latest",
+        "font-awesome": "latest",
+        "holderjs": "~2.4.1",
+        "metisMenu": "~1.1.3",
+        "morrisjs": "~0.5.1",
+        "datatables-responsive": "~1.0.3",
+        "bootstrap-social": "~4.8.0",
+        "flot.tooltip": "~0.8.4"
+    },
+    "private": true
+}

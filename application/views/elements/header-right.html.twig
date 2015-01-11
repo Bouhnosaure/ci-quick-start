@@ -1,0 +1,5 @@
+{% if is_logged() %}
+    {% include "elements/auth-components/header-logged.html.twig" %}
+{% else %}
+    {% include "elements/auth-components/header-login.html.twig" %}
+{% endif %}
