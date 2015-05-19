@@ -11,7 +11,7 @@
         "nesbot/carbon": "dev-master",
         "symfony/yaml": "dev-master",
         "phpunit/phpunit": "dev-master",
-        "twig/twig": "dev-master",
+        "twig/twig": "~1.16",
         "hybridauth/hybridauth": "dev-3.0.0-Remake",
         "swiftmailer/swiftmailer": "dev-master"
     },
