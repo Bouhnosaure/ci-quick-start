@@ -21,8 +21,10 @@ class Welcome extends CI_Controller {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     public function index() {
-        //$this->load->library('migration');
         //$this->load->model('ion_auth_model');
+        
+        
+        //$this->load->library('migration');
         //$this->migration->latest();
         $this->twig->display('statics/welcome_message.html.twig', array('session' => $this->session->all_userdata()));
     }
