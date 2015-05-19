@@ -36,4 +36,8 @@ All the borring stuff is DONE, just Code, with latest technologies ;)
 - You want send mail, humm you have the choice between Swiftmail and Built-in mailing system of codeigniter ! 
 
 ###Hacks
-
+for migrate DB uncomment in controller/welcome.php:
+```
+//$this->load->library('migration');
+//$this->migration->latest();
+```
