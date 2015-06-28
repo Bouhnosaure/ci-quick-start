@@ -27,6 +27,7 @@ Hummm just take a look to
 - Yml 
 - Carbon
 - SwiftMailer
+- PhpUnit tests
 
 All the borring stuff is DONE, just Code, with latest technologies ;) 
 
